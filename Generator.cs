@@ -134,17 +134,11 @@ namespace Nest
                             }
                             else
                             {
-                                string[] parts = line.Split(':');
+                                string[] parts = line.Split(new string[] { ": " }, 2, StringSplitOptions.None);
                                 if (parts.Length >= 2)
                                 {
                                     string key = parts[0];
-                                    StringBuilder sbv = new StringBuilder();
-                                    for (int i = 1; i < parts.Length; i++)
-                                    {
-                                        sbv.Append(parts[i]);
-                                        sbv.Append(" ");
-                                    }
-                                    string val = sbv.ToString().Trim();
+                                    string val = parts[1].Trim();
                                     metadata.Add(key, val);
                                     continue;
                                 }
